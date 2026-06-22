@@ -1,0 +1,16 @@
+{
+  "name": "location-context-tool",
+  "version": "1.0.0",
+  "description": "CLI: US ZIP code -> enriched location/weather/air-quality JSON for AI agents",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": "26.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
