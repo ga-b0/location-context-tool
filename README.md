@@ -8,6 +8,13 @@ CLI que recibe un ZIP code de EE.UU. y devuelve un JSON enriquecido, ubicación,
 - pnpm como package manager.
 - Sin dependencias externas de runtime.
 
+## Clonar
+
+```bash
+git clone https://github.com/ga-b0/location-context-tool.git
+cd location-context-tool
+```
+
 ## Instalar
 
 ```bash
