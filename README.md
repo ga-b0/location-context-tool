@@ -94,6 +94,25 @@ pnpm serve
 - **Aislamiento por ZIP**: un ZIP mal formado dentro de un batch recibe su propio `error`, no rompe los demás.
 - **Errores**: falta param `zip` o formato inválido → `400` con `INVALID_ZIP`; ruta desconocida → `404` con `NOT_FOUND`.
 
+### Probar API en producción
+
+Deploy en vivo: `https://location-context-tool.onrender.com`
+
+```bash
+# zip único
+curl "https://location-context-tool.onrender.com/context?zip=80203"
+
+# multi-zip
+curl "https://location-context-tool.onrender.com/context?zip=80203,10001,90210"
+
+# zip inválido
+curl "https://location-context-tool.onrender.com/context?zip=abcde"
+```
+
+En Postman: método `GET`, URL `https://location-context-tool.onrender.com/context`, query param `zip` = `80203` (o `80203,10001` para multi-zip).
+
+Nota: instancia free de Render se duerme tras inactividad, la primera petición después de un rato puede tardar ~30-50s en despertar (cold start), las siguientes son rápidas.
+
 ## Caché en memoria
 
 `src/locationContext.js` mantiene un `Map` indexado por ZIP. Resultados exitosos se cachean durante la vida del proceso, llamadas repetidas (el CLI vive poco, pero el server queda corriendo) se saltan todas las llamadas a APIs externas. Resultados con error nunca se cachean, así una falla transitoria se puede reintentar.
